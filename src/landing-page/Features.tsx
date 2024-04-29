@@ -1,6 +1,6 @@
 "use client";
 
-import { breakpoints, css, styled } from "@/lib/styled";
+import { breakpoints, styled } from "@/lib/styled";
 import { Container } from "./components/Container";
 import { Typography } from "./components/Typography";
 import { Card } from "./components/Card";
@@ -9,7 +9,7 @@ import { Button } from "./components/Button";
 import { useState } from "react";
 import { Link } from "./components/Link";
 
-const RowItem = styled.div(({ theme }) => ({
+const RowItem = styled.div({
   display: "flex",
   flexDirection: "column",
   width: "50%",
@@ -18,7 +18,7 @@ const RowItem = styled.div(({ theme }) => ({
   [breakpoints.down("sm")]: {
     width: "100%",
   },
-}));
+});
 
 const items = [
   {
@@ -142,14 +142,12 @@ export function Features({ isDarkMode }: { isDarkMode?: boolean }) {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             height: 300,
-            [breakpoints.up("sm")]: {
-              height: 500,
-            },
-          }}
-          style={{
             backgroundImage: isDarkMode
               ? items[selectedIndex].imageDark
               : items[selectedIndex].imageLight,
+            [breakpoints.up("sm")]: {
+              height: 500,
+            },
           }}
         />
       </RowItem>

@@ -1,5 +1,5 @@
 "use client";
-import { breakpoints, css, styled } from "@/lib/styled";
+import { breakpoints, styled } from "@/lib/styled";
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import { Link } from "./components/Link";

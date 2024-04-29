@@ -1,5 +1,5 @@
 "use client";
-import { breakpoints, css, styled } from "@/lib/styled";
+import { breakpoints, styled } from "@/lib/styled";
 import { Container } from "./components/Container";
 import { Card } from "./components/Card";
 import { Divider } from "./components/Divider";

@@ -64,7 +64,7 @@ const NavItem = styled.a(({ theme }) => ({
   ...theme.typography.button,
 }));
 
-export function Header() {
+export function Header({ theme }: { theme?: string }) {
   return (
     <HeaderWrapper>
       <Toolbar>
@@ -111,7 +111,7 @@ export function Header() {
             },
           }}
         >
-          <ToggleThemeButton />
+          <ToggleThemeButton currentTheme={theme} />
           <Button color="primary" variant="outlined" size="medium">
             Sign in
           </Button>

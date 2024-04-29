@@ -59,7 +59,6 @@ interface CustomTheme {
       secondary: string;
       primary: string;
       disabled: string;
-      icon: string;
     };
     background: {
       plain: string;

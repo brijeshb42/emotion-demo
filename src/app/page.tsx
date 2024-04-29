@@ -6,14 +6,18 @@ import { Testimonials } from "@/landing-page/Testimonials";
 import { Highlights } from "@/landing-page/Highlights";
 import { Pricing } from "@/landing-page/Pricing";
 import { Footer } from "@/landing-page/Footer";
+import { GlobalStyle } from "@/landing-page/GlobalStyle";
+import { cookies } from "next/headers";
 
 export default function Home() {
+  const theme = cookies().get("theme")?.value || "dark";
   return (
     <main>
-      <Header />
-      <Hero />
+      <GlobalStyle />
+      <Header theme={theme} />
+      <Hero isDarkMode={theme === "dark"} />
       <Divider />
-      <Features />
+      <Features isDarkMode={theme === "dark"} />
       <Divider />
       <Testimonials />
       <Divider />

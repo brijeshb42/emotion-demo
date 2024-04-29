@@ -1,6 +1,8 @@
 "use client";
 import { css as baseCss } from "@emotion/css";
 import { Theme } from "@emotion/react";
+import { Element, RULESET } from "stylis";
+
 import createBreakpoints from "./createBreakpoints";
 
 type BaseCssArg = Parameters<typeof baseCss>;
@@ -21,6 +23,68 @@ const greyPalette = {
   900: "hsl(220, 30%, 8%)",
 };
 const fontFamily = `"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`;
+
+const darkModeColorTokens = {
+  primary: {
+    light: "hsl(210, 100%, 65%)",
+    main: "hsl(210, 100%, 45%)",
+    dark: "hsl(210, 100%, 35%)",
+    contrastText: "hsl(210, 100%, 97%)",
+  },
+  info: {
+    light: "hsl(210, 98%, 42%)",
+    main: "hsl(210, 100%, 35%)",
+    dark: "hsl(210, 100%, 21%)",
+    contrastText: "hsl(210, 100%, 65%)",
+  },
+  grey: greyPalette,
+  divider: "hsla(220, 25%, 35%, 0.3)",
+  background: {
+    plain: "hsl(220, 20%, 2%)",
+    lvl1: "hsl(220, 30%, 3%, 1)",
+    lvl2: "hsl(220, 30%, 5%, 0.8)",
+  },
+  text: {
+    primary: "hsl(220, 40%, 100%)",
+    secondary: "hsl(220, 40%, 75%)",
+    disabled: "rgba(255, 255, 255, 0.5)",
+  },
+  common: {
+    black: "#000",
+    white: "#fff",
+  },
+};
+
+const lightModeColorTokens = {
+  primary: {
+    light: "hsl(210, 100%, 65%)",
+    main: "hsl(210, 100%, 45%)",
+    dark: "hsl(210, 100%, 35%)",
+    contrastText: "hsl(210, 100%, 97%)",
+  },
+  info: {
+    light: "hsl(210, 100%, 90%)",
+    main: "hsl(210, 100%, 65%)",
+    dark: "hsl(210, 98%, 55%)",
+    contrastText: "hsl(220, 60%, 99%)",
+  },
+  grey: greyPalette,
+  divider: "hsla(220, 25%, 80%, 0.6)",
+  background: {
+    plain: "white",
+    lvl1: "hsl(220, 30%, 98%, 0.4)",
+    lvl2: "hsl(220, 30%, 96%, 0.4)",
+  },
+  text: {
+    primary: "hsl(220, 40%, 10%)",
+    secondary: "hsl(220, 40%, 25%)",
+    disabled: "rgba(0, 0, 0, 0.38)",
+  },
+  common: {
+    black: "#000",
+    white: "#fff",
+  },
+};
 
 const baseTheme: Theme["vars"] = {
   typography: {
@@ -128,37 +192,7 @@ const baseTheme: Theme["vars"] = {
       letterSpacing: "inherit",
     },
   },
-  palette: {
-    primary: {
-      light: "hsl(210, 100%, 65%)",
-      main: "hsl(210, 100%, 45%)",
-      dark: "hsl(210, 100%, 35%)",
-      contrastText: "hsl(210, 100%, 97%)",
-    },
-    info: {
-      light: "hsl(210, 98%, 42%)",
-      main: "hsl(210, 100%, 35%)",
-      dark: "hsl(210, 100%, 21%)",
-      contrastText: "hsl(210, 100%, 65%)",
-    },
-    grey: greyPalette,
-    divider: "hsla(220, 25%, 35%, 0.3)",
-    background: {
-      plain: "hsl(220, 20%, 2%)",
-      lvl1: "hsl(220, 30%, 3%, 1)",
-      lvl2: "hsl(220, 30%, 5%, 0.8)",
-    },
-    text: {
-      primary: "hsl(220, 40%, 100%)",
-      secondary: "hsl(220, 40%, 75%)",
-      disabled: "rgba(255, 255, 255, 0.5)",
-      icon: "rgba(255, 255, 255, 0.5)",
-    },
-    common: {
-      black: "#000",
-      white: "#fff",
-    },
-  },
+  palette: darkModeColorTokens,
   zIndex: {
     appBar: 1000,
   },
@@ -185,7 +219,7 @@ export const theme: Theme = {
   ...baseTheme,
   applyStyles(scheme, obj) {
     return {
-      [`@media (prefers-color-scheme: ${scheme})`]: obj,
+      [`:where(.${scheme}) &`]: obj,
     };
   },
   spacing(space) {
@@ -193,6 +227,30 @@ export const theme: Theme = {
   },
 };
 
+export const lightTheme: Theme = {
+  ...theme,
+  vars: {
+    ...theme.vars,
+    palette: lightModeColorTokens,
+  },
+  palette: lightModeColorTokens,
+};
+
 export const breakpoints = createBreakpoints({});
+
+// A workaround to https://github.com/emotion-js/emotion/issues/2836
+// to be able to use `:where` selector for styling.
+export function globalSelector(element: Element) {
+  switch (element.type) {
+    case RULESET:
+      element.props = (element.props as string[]).map((value: any) => {
+        if (value.match(/(:where|:is)\(/)) {
+          value = value.replace(/\.[^:]+(:where|:is)/, "$1");
+          return value;
+        }
+        return value;
+      });
+  }
+}
 
 export { default as styled } from "@emotion/styled";
