@@ -142,7 +142,7 @@ function TierCard({
             css={{
               display: "flex",
               alignItems: "center",
-              gap: 1.5,
+              gap: 1.5 * 8,
             }}
           >
             <CheckCircleRoundedIcon

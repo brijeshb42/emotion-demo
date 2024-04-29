@@ -182,7 +182,10 @@ export function Hero({ isDarkMode }: { isDarkMode?: boolean }) {
           css={{ textAlign: "center" }}
         >
           By clicking &quot;Start now&quot; you agree to our&nbsp;
-          <Link href="#">Terms & Conditions</Link>.
+          <Link href="#" variant="caption" fontWeight="medium">
+            Terms & Conditions
+          </Link>
+          .
         </Typography>
         <StyledImg
           alt="Product UI"

@@ -92,7 +92,7 @@ export function Footer() {
                   variant="body2"
                   color="secondary"
                   fontWeight="medium"
-                  sx={{ mb: 0.5 }}
+                  css={{ marginBottom: 0.5 * 8 }}
                 >
                   Your email:
                 </Typography>

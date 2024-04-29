@@ -2,7 +2,10 @@ import React from "react";
 import { styled } from "@/lib/styled";
 import { Typography } from "./Typography";
 
-const LinkRoot = styled.a<React.HTMLProps<"a">>(({ theme }) => ({
+export const LinkRoot = styled(
+  Typography,
+  {}
+)(({ theme }) => ({
   position: "relative",
   color: theme.vars.palette.primary.main,
   textDecoration: "none",
@@ -28,13 +31,6 @@ const LinkRoot = styled.a<React.HTMLProps<"a">>(({ theme }) => ({
   }),
 }));
 
-type LinkProps = React.ComponentProps<typeof LinkRoot>;
-
-function TypographyLink(props: any) {
-  return <Typography {...props} as="a" />;
-}
-
-export function Link(props: LinkProps) {
-  // @ts-expect-error
-  return <LinkRoot {...props} as={TypographyLink} />;
+export function Link(props: any) {
+  return <LinkRoot {...props} as="a" />;
 }
