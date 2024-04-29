@@ -53,27 +53,20 @@ const FeatureCard = styled(Button, {
   shouldForwardProp(propName) {
     return propName !== "isSelected";
   },
-})<{ isSelected?: boolean }>(({ theme }) => ({
+})<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   height: "auto",
   padding: theme.spacing(2),
   flexDirection: "column",
   alignItems: "start",
   gap: theme.spacing(0.5),
   borderRadius: theme.vars.shape.borderRadius,
-  variants: [
-    {
-      props: {
-        isSelected: true,
-      },
-      style: {
-        borderColor: theme.vars.palette.primary.light,
-        backgroundColor: "hsla(210, 100%, 80%, 0.2)",
-        ...theme.applyStyles("dark", {
-          backgroundColor: "hsla(210, 100%, 15%, 0.5)",
-        }),
-      },
-    },
-  ],
+  ...(isSelected && {
+    borderColor: theme.vars.palette.primary.light,
+    backgroundColor: "hsla(210, 100%, 80%, 0.2)",
+    ...theme.applyStyles("dark", {
+      backgroundColor: "hsla(210, 100%, 15%, 0.5)",
+    }),
+  }),
 }));
 
 export function Features({ isDarkMode }: { isDarkMode?: boolean }) {
