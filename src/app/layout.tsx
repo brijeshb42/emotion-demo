@@ -11,7 +11,7 @@ import { globalSelector } from "@/lib/styled";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pigment CSS Demo",
+  title: "Emotion Demo",
   description:
     "A demo that showcases how to style your app with Pigment CSS in multiple ways.",
 };
