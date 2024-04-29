@@ -8,9 +8,15 @@ import { Pricing } from "@/landing-page/Pricing";
 import { Footer } from "@/landing-page/Footer";
 import { GlobalStyle } from "@/landing-page/GlobalStyle";
 import { cookies } from "next/headers";
+import Perf from "@/landing-page/Perf";
 
-export default function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams: Record<string, string>;
+}) {
   const theme = cookies().get("theme")?.value || "dark";
+
   return (
     <main>
       <GlobalStyle />
@@ -26,6 +32,7 @@ export default function Home() {
       <Pricing />
       <Divider />
       <Footer />
+      {searchParams.metric === "1" && <Perf />}
     </main>
   );
 }

@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  stylis: 4.3.2
+
 dependencies:
   '@emotion/cache':
     specifier: latest
@@ -32,6 +35,9 @@ dependencies:
   stylis:
     specifier: 4.3.2
     version: 4.3.2
+  web-vitals:
+    specifier: ^3.5.2
+    version: 3.5.2
 
 devDependencies:
   '@types/node':
@@ -121,7 +127,7 @@ packages:
       escape-string-regexp: 4.0.0
       find-root: 1.1.0
       source-map: 0.5.7
-      stylis: 4.2.0
+      stylis: 4.3.2
     dev: false
 
   /@emotion/cache@11.11.0:
@@ -131,7 +137,7 @@ packages:
       '@emotion/sheet': 1.2.2
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
-      stylis: 4.2.0
+      stylis: 4.3.2
     dev: false
 
   /@emotion/css@11.11.2:
@@ -2770,10 +2776,6 @@ packages:
       react: 18.3.1
     dev: false
 
-  /stylis@4.2.0:
-    resolution: {integrity: sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==}
-    dev: false
-
   /stylis@4.3.2:
     resolution: {integrity: sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg==}
     dev: false
@@ -2914,6 +2916,10 @@ packages:
     dependencies:
       punycode: 2.3.1
     dev: true
+
+  /web-vitals@3.5.2:
+    resolution: {integrity: sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==}
+    dev: false
 
   /which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

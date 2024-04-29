@@ -67,6 +67,30 @@ const NavItem = styled.a(({ theme }) => ({
 export function Header({ theme }: { theme?: string }) {
   return (
     <HeaderWrapper>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+document.addEventListener('click', (ev) => {
+  const el = ev.target;
+  if (!el.classList.contains('nav-item')) {
+    return;
+  }
+  ev.preventDefault();
+  const sectionElement = document.querySelector(el.getAttribute('href'));
+  if (!sectionElement) {
+    return;
+  }
+  const offset = 128;
+  const targetScroll = sectionElement.offsetTop - offset;
+  sectionElement.scrollIntoView({ behavior: 'smooth' });
+  window.scrollTo({
+    top: targetScroll,
+    behavior: 'smooth',
+  });
+});
+      `,
+        }}
+      />
       <Toolbar>
         <div
           css={{
