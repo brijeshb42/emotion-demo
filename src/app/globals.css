@@ -1,0 +1,35 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: "inherit";
+}
+
+strong,
+b {
+  font-weight: var(--typography-fontWeightBold);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--palette-text-primary);
+  background-color: var(--palette-background-plain);
+}
+
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
