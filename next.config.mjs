@@ -1,3 +1,4 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
@@ -9,4 +10,9 @@ const nextConfig = {
   reactStrictMode: false,
 };
 
-export default nextConfig;
+export default process.env.ANALYZE === "1"
+  ? withBundleAnalyzer({
+      enabled: true,
+      analyzerMode: "json",
+    })(nextConfig)
+  : nextConfig;

@@ -27,6 +27,21 @@ const Tcell = styled.th(({ theme }) => ({
   borderBottom: `1px solid ${theme.vars.palette.divider}`,
 }));
 
+const STATIC_DATA = [
+  {
+    name: "First Load JS",
+    value: "130 kB",
+  },
+  {
+    name: "HTML Size",
+    value: "15.4 kB",
+  },
+  {
+    name: "CSS File Size",
+    value: "1.1 kB",
+  },
+];
+
 export default function Perf() {
   const [metrices, setMetrices] = React.useState<Metric[]>([]);
 
@@ -88,6 +103,13 @@ export default function Perf() {
           </Tr>
         </thead>
         <tbody>
+          {STATIC_DATA.map((metric, index) => (
+            <Tr key={index}>
+              <Tcell as="td">{metric.name}</Tcell>
+              <Tcell as="td">{metric.value}</Tcell>
+              <Tcell as="td">-</Tcell>
+            </Tr>
+          ))}
           {metrices.map((metric, index) => (
             <Tr key={index}>
               <Tcell as="td">{metric.name}</Tcell>

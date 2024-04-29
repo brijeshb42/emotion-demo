@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:analyze": "ANALYZE=1 next build",
     "start": "next start",
     "lint": "next lint",
     "post-update": "echo \"codesandbox preview only, need an update\" && pnpm update --latest"
@@ -22,6 +23,7 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.3",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
