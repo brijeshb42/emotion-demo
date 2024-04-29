@@ -112,7 +112,7 @@ export function Testimonials({ isDarkMode }: { isDarkMode?: boolean }) {
             >
               {testimonial.testimonial}
             </Typography>
-            <div css={{ display: "flex", gap: 2 * 8, mt: "auto" }}>
+            <div css={{ display: "flex", gap: 2 * 8, marginTop: "auto" }}>
               <img
                 src={testimonial.logo}
                 alt={testimonial.name}

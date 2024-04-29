@@ -25,7 +25,7 @@ export default function Home({
       <Divider />
       <Features isDarkMode={theme === "dark"} />
       <Divider />
-      <Testimonials />
+      <Testimonials isDarkMode={theme === "dark"} />
       <Divider />
       <Highlights />
       <Divider />
