@@ -187,14 +187,24 @@ export function Hero({ isDarkMode }: { isDarkMode?: boolean }) {
           </Link>
           .
         </Typography>
-        <StyledImg
-          alt="Product UI"
-          src={
-            isDarkMode
-              ? "/static/images/templates/templates-images/hero-dark.jpg"
-              : "/static/images/templates/templates-images/hero-light.png"
-          }
-        />
+        <picture>
+          <source
+            srcSet={
+              isDarkMode
+                ? "/static/images/templates/templates-images/hero-dark.webp"
+                : "/static/images/templates/templates-images/hero-light.webp"
+            }
+            type="image/webp"
+          />
+          <StyledImg
+            alt="Product UI"
+            src={
+              isDarkMode
+                ? "/static/images/templates/templates-images/hero-dark.jpg"
+                : "/static/images/templates/templates-images/hero-light.png"
+            }
+          />
+        </picture>
       </div>
     </HeroWrapper>
   );

@@ -1,7 +1,9 @@
 "use client";
 import { ReactNode } from "react";
+import { prefixer } from "stylis";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider as Tp } from "@emotion/react";
-import { lightTheme, theme as darkTheme } from "./styled";
+import { lightTheme, theme as darkTheme, globalSelector } from "./styled";
 
 export function ThemeProvider({
   themeKey,
@@ -11,5 +13,11 @@ export function ThemeProvider({
   children?: ReactNode;
 }) {
   const theme = themeKey === "light" ? lightTheme : darkTheme;
-  return <Tp theme={theme}>{children}</Tp>;
+  return (
+    <AppRouterCacheProvider
+      options={{ stylisPlugins: [prefixer, globalSelector] }}
+    >
+      <Tp theme={theme}>{children}</Tp>
+    </AppRouterCacheProvider>
+  );
 }
