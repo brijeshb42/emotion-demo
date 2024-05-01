@@ -34,11 +34,11 @@ const STATIC_DATA = [
   },
   {
     name: "HTML Size",
-    value: "15.7 kB",
+    value: "15.8 kB",
   },
   {
     name: "CSS File Size",
-    value: "1.1 kB",
+    value: "1.0 kB",
   },
 ];
 
